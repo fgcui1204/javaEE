@@ -18,8 +18,8 @@ public class UserService {
         return userDao.getUserList();
     }
 
-    public int addUser(User user) {
-        return userDao.addUser(user);
+    public void addUser(User user) {
+        userDao.addUser(user);
     }
 
     public int deleteUser(int id) {

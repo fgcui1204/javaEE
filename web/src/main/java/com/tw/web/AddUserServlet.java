@@ -22,9 +22,8 @@ public class AddUserServlet extends HttpServlet {
         String mail = request.getParameter("mail");
 
         User user = new User(name,sex,mail,age);
-        if(userService.addUser(user)>0) {
-            response.sendRedirect("/web");
-        }
+        userService.addUser(user);
+        response.sendRedirect("/web");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
