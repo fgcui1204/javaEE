@@ -1,7 +1,13 @@
 package com.tw.dao;
 
 import com.tw.bean.User;
+import com.tw.util.HibernateUtil;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.hibernate.cfg.Configuration;
 
+import javax.jws.soap.SOAPBinding;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -19,25 +25,10 @@ public class UserDao {
     public List<User> getUserList(){
         List<User> userList = new ArrayList<User>();
 
-        try {
-            statement = connection.createStatement();
-            String sql = "select * from users";
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        userList = session.createQuery("from User").list();
+        session.close();
 
-            ResultSet resultSet = statement.executeQuery(sql);
-
-            while (resultSet.next()) {
-                int id = resultSet.getInt("id");
-                String name = resultSet.getString("name");
-                String sex = resultSet.getString("sex");
-                String mail = resultSet.getString("mail");
-                int age = resultSet.getInt("age");
-
-                User user = new User(id,name,sex,mail,age);
-                userList.add(user);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
         return userList;
     }
 
