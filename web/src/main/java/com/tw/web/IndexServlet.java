@@ -8,7 +8,7 @@ import javax.servlet.*;
 import com.tw.bean.User;
 import com.tw.service.UserService;
 
-public class HelloServlet extends HttpServlet {
+public class IndexServlet extends HttpServlet {
     public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 
         UserService userService = new UserService();
@@ -16,6 +16,6 @@ public class HelloServlet extends HttpServlet {
         req.setAttribute("userList", userList);
 
         req.getRequestDispatcher("userManagement.jsp").forward(req, res);
-        
+
     }
 }

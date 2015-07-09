@@ -5,7 +5,7 @@ import org.junit.runner.RunWith;
 import java.util.List;
 import static org.junit.Assert.assertEquals;
 
-public class HelloServletTest {
+public class IndexServletTest {
 
     @Test
     public void test() throws Exception {
