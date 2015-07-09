@@ -65,26 +65,30 @@ public class UserDao {
     }
 
     public User getUser(int id){
-        User user = new User();
-        try {
-            statement = connection.createStatement();
-            String sql = "select * from users where id="+id;
+        Session session = HibernateUtil.getSessionFactory().openSession();
 
-            ResultSet resultSet = statement.executeQuery(sql);
-
-            while (resultSet.next()) {
-                int userId = resultSet.getInt("id");
-                String name = resultSet.getString("name");
-                String sex = resultSet.getString("sex");
-                String mail = resultSet.getString("mail");
-                int age = resultSet.getInt("age");
-
-                user = new User(userId,name,sex,mail,age);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        User user = (User)session.get(User.class,id);
         return user;
+//        User user = new User();
+//        try {
+//            statement = connection.createStatement();
+//            String sql = "select * from users where id="+id;
+//
+//            ResultSet resultSet = statement.executeQuery(sql);
+//
+//            while (resultSet.next()) {
+//                int userId = resultSet.getInt("id");
+//                String name = resultSet.getString("name");
+//                String sex = resultSet.getString("sex");
+//                String mail = resultSet.getString("mail");
+//                int age = resultSet.getInt("age");
+//
+//                user = new User(userId,name,sex,mail,age);
+//            }
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+//        return user;
     }
 
     public int updateUser(User user){
