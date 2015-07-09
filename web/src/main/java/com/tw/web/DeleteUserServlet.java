@@ -1,6 +1,6 @@
 package com.tw.web;
 
-import com.tw.core.Service;
+import com.tw.service.UserService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -21,8 +21,8 @@ public class DeleteUserServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int id = Integer.parseInt(request.getParameter("id"));
 
-        Service service = new Service();
-        if(service.deleteUser(id)>0){
+        UserService userService = new UserService();
+        if(userService.deleteUser(id)>0){
             response.sendRedirect("/web");
         }
     }

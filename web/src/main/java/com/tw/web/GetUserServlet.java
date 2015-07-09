@@ -1,7 +1,7 @@
 package com.tw.web;
 
 import com.tw.bean.User;
-import com.tw.core.Service;
+import com.tw.service.UserService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -20,7 +20,7 @@ public class GetUserServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int id = Integer.parseInt(request.getParameter("id"));
 
-        User user = new Service().getUser(id);
+        User user = new UserService().getUser(id);
         request.setAttribute("user", user);
 
         request.getRequestDispatcher("updateUser.jsp").forward(request, response);

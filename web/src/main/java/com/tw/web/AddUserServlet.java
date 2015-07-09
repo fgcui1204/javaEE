@@ -1,7 +1,7 @@
 package com.tw.web;
 
 import com.tw.bean.User;
-import com.tw.core.Service;
+import com.tw.service.UserService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,7 +14,7 @@ import java.io.IOException;
 public class AddUserServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        Service service = new Service();
+        UserService userService = new UserService();
 
         String name = request.getParameter("name");
         String sex = request.getParameter("sex");
@@ -22,7 +22,7 @@ public class AddUserServlet extends HttpServlet {
         String mail = request.getParameter("mail");
 
         User user = new User(name,sex,mail,age);
-        if(service.addUser(user)>0) {
+        if(userService.addUser(user)>0) {
             response.sendRedirect("/web");
         }
     }

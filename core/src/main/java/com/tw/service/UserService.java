@@ -1,4 +1,4 @@
-package com.tw.core;
+package com.tw.service;
 
 import com.tw.bean.User;
 import com.tw.dao.DbConnection;
@@ -11,7 +11,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Service {
+public class UserService {
     UserDao userDao = new UserDao();
 
     public List<User> getUserList() {

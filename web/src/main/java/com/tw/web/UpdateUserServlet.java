@@ -1,7 +1,7 @@
 package com.tw.web;
 
 import com.tw.bean.User;
-import com.tw.core.Service;
+import com.tw.service.UserService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -21,8 +21,8 @@ public class UpdateUserServlet extends HttpServlet {
         int age = Integer.parseInt(request.getParameter("age"));
 
         User user = new User(id,name,sex,mail,age);
-        Service service = new Service();
-        if(service.updateUser(user)>0){
+        UserService userService = new UserService();
+        if(userService.updateUser(user)>0){
             response.sendRedirect("/web");
         }
     }
