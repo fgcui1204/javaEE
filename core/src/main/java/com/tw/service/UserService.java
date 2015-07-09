@@ -30,7 +30,7 @@ public class UserService {
         return userDao.getUser(id);
     }
 
-    public int updateUser(User user) {
-        return userDao.updateUser(user);
+    public void updateUser(User user) {
+        userDao.updateUser(user);
     }
     }

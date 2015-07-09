@@ -22,9 +22,8 @@ public class UpdateUserServlet extends HttpServlet {
 
         User user = new User(id,name,sex,mail,age);
         UserService userService = new UserService();
-        if(userService.updateUser(user)>0){
-            response.sendRedirect("/web");
-        }
+        userService.updateUser(user);
+        response.sendRedirect("/web");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
