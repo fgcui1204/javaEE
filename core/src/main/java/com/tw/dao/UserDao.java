@@ -91,16 +91,22 @@ public class UserDao {
 //        return user;
     }
 
-    public int updateUser(User user){
+    public void updateUser(User user){
 
-        try {
-            statement = connection.createStatement();
-            String sql = "update users set name='"+user.getName()+"',sex='"+user.getSex()+"',mail='"+user.getMail()+"',age="+user.getAge()+" where id="+user.getUserId();
+        Session session = HibernateUtil.getSessionFactory().openSession();
 
-            result = statement.executeUpdate(sql);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return result;
+        Transaction transaction = session.beginTransaction();
+        session.update(user);
+        transaction.commit();
+        session.close();
+//        try {
+//            statement = connection.createStatement();
+//            String sql = "update users set name='"+user.getName()+"',sex='"+user.getSex()+"',mail='"+user.getMail()+"',age="+user.getAge()+" where id="+user.getUserId();
+//
+//            result = statement.executeUpdate(sql);
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+//        return result;
     }
 }
