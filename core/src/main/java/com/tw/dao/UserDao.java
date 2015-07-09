@@ -46,16 +46,22 @@ public class UserDao {
 //        return result;
     }
 
-    public int deleteUser(int id){
+    public void deleteUser(int id){
+        Session session = HibernateUtil.getSessionFactory().openSession();
 
-        try {
-            statement = connection.createStatement();
-            String sql = "delete from users where id="+id;
-            result = statement.executeUpdate(sql);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return result;
+        Transaction transaction = session.beginTransaction();
+        User user = (User)session.get(User.class,id);
+        session.delete(user);
+        transaction.commit();
+        session.close();
+//        try {
+//            statement = connection.createStatement();
+//            String sql = "delete from users where id="+id;
+//            result = statement.executeUpdate(sql);
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+//        return result;
     }
 
     public User getUser(int id){
