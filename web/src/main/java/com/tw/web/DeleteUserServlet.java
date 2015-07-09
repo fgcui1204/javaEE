@@ -22,8 +22,7 @@ public class DeleteUserServlet extends HttpServlet {
         int id = Integer.parseInt(request.getParameter("id"));
 
         UserService userService = new UserService();
-        if(userService.deleteUser(id)>0){
-            response.sendRedirect("/web");
-        }
+        userService.deleteUser(id);
+        response.sendRedirect("/web");
     }
 }
