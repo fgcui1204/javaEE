@@ -3,11 +3,8 @@ package com.tw.dao;
 import com.tw.bean.User;
 import com.tw.util.HibernateUtil;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
-import org.hibernate.cfg.Configuration;
+import org.hibernate.Transaction;
 
-import javax.jws.soap.SOAPBinding;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -32,16 +29,21 @@ public class UserDao {
         return userList;
     }
 
-    public int addUser(User user){
+    public void addUser(User user){
+        Session session = HibernateUtil.getSessionFactory().openSession();
 
-        try {
-            statement = connection.createStatement();
-            String sql = "insert into users values (null,'"+user.getName()+"','"+user.getSex()+"','"+user.getMail()+"',"+user.getAge()+")";
-            result = statement.executeUpdate(sql);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return result;
+        Transaction transaction = session.beginTransaction();
+        session.save(user);
+        transaction.commit();
+        session.close();
+//        try {
+//            statement = connection.createStatement();
+//            String sql = "insert into users values (null,'"+user.getName()+"','"+user.getSex()+"','"+user.getMail()+"',"+user.getAge()+")";
+//            result = statement.executeUpdate(sql);
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+//        return result;
     }
 
     public int deleteUser(int id){
