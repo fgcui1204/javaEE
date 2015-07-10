@@ -10,17 +10,18 @@ import java.util.List;
 
 public class UserDao {
 
-    public List<User> getUserList(){
-        List<User> userList = new ArrayList<User>();
+    Session session = HibernateUtil.getSessionFactory().openSession();
 
-        Session session = HibernateUtil.getSessionFactory().openSession();
+    public List<User> getUserList(){
+
+        List<User> userList = new ArrayList<User>();
         userList = session.createQuery("from User").list();
+
         session.close();
         return userList;
     }
 
     public void addUser(User user){
-        Session session = HibernateUtil.getSessionFactory().openSession();
 
         Transaction transaction = session.beginTransaction();
         session.save(user);
@@ -29,7 +30,6 @@ public class UserDao {
     }
 
     public void deleteUser(int id){
-        Session session = HibernateUtil.getSessionFactory().openSession();
 
         Transaction transaction = session.beginTransaction();
         User user = (User)session.get(User.class,id);
@@ -39,15 +39,12 @@ public class UserDao {
     }
 
     public User getUser(int id){
-        Session session = HibernateUtil.getSessionFactory().openSession();
 
         User user = (User)session.get(User.class,id);
         return user;
     }
 
     public void updateUser(User user){
-
-        Session session = HibernateUtil.getSessionFactory().openSession();
 
         Transaction transaction = session.beginTransaction();
         session.update(user);
