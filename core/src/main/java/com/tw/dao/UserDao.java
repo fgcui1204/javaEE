@@ -16,7 +16,6 @@ public class UserDao {
         Session session = HibernateUtil.getSessionFactory().openSession();
         userList = session.createQuery("from User").list();
         session.close();
-
         return userList;
     }
 
