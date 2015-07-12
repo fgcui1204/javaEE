@@ -34,7 +34,6 @@ public class UserController {
 
     @RequestMapping(value = "/updateUser", method = RequestMethod.POST)
     public ModelAndView updateUser(@RequestParam int id, @RequestParam String name,@RequestParam String sex, @RequestParam String mail, @RequestParam int age){
-        ModelAndView modelAndView = new ModelAndView();
         User user = new User(id, name,sex, mail,age);
         userService.updateUser(user);
         return this.getUserList();
