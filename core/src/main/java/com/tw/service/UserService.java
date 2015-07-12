@@ -1,16 +1,10 @@
 package com.tw.service;
 
 import com.tw.bean.User;
-import com.tw.dao.DbConnection;
 import com.tw.dao.UserDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
