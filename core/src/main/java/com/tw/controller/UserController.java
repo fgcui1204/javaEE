@@ -4,6 +4,7 @@ import com.tw.bean.User;
 import com.tw.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -23,8 +24,8 @@ public class UserController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/getUser", method = RequestMethod.GET)
-    public ModelAndView getUser(@RequestParam int id){
+    @RequestMapping(value = "/users/{id}", method = RequestMethod.GET)
+    public ModelAndView getUser(@PathVariable int id){
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("updateUser");
         modelAndView.addObject("user",userService.getUser(id));
