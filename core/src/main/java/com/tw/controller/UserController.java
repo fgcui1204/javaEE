@@ -32,24 +32,24 @@ public class UserController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/updateUser", method = RequestMethod.POST)
+    @RequestMapping(value = "/users/put", method = RequestMethod.POST)
     public String updateUser(@RequestParam int id, @RequestParam String name,@RequestParam String sex, @RequestParam String mail, @RequestParam int age){
         User user = new User(id, name,sex, mail,age);
         userService.updateUser(user);
-        return "redirect:/";
+        return "redirect:/users";
     }
 
-    @RequestMapping(value = "/deleteUser", method = RequestMethod.GET)
-    public String deleteUser(@RequestParam int id){
+    @RequestMapping(value = "/users/delete/{id}", method = RequestMethod.GET)
+    public String deleteUser(@PathVariable int id){
         userService.deleteUser(id);
-        return "redirect:/";
+        return "redirect:/users";
     }
 
-    @RequestMapping(value = "/addUser", method = RequestMethod.POST)
+    @RequestMapping(value = "/users/post", method = RequestMethod.POST)
     public String addUser(@RequestParam String name,@RequestParam String sex, @RequestParam String mail, @RequestParam int age){
         User user = new User(name,sex, mail,age);
         userService.addUser(user);
-        return "redirect:/";
+        return "redirect:/users/";
     }
 
 }
