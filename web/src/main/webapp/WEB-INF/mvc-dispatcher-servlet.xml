@@ -6,7 +6,7 @@
         http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
-    <context:annotation-config/>
+    <!--<context:annotation-config/>-->
     <context:component-scan base-package="com.tw"/>
 
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -15,5 +15,5 @@
         <property name="suffix" value=".jsp"/>
     </bean>
 
-    <mvc:annotation-driven/>
+    <!--<mvc:annotation-driven/> 只找mvc的组件-->
 </beans>
