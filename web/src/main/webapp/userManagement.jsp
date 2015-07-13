@@ -23,7 +23,7 @@
     <td>${user.sex}</td>
     <td>${user.mail}</td>
     <td>${user.age}</td>
-    <td><a href="/web/deleteUser?id=${user.userId}">删除</a></td>
+    <td><a href="/web/users/delete/${user.userId}">删除</a></td>
     <td><a href="/web/users/${user.userId}">修改</a></td>
   </tr>
 </c:forEach>
