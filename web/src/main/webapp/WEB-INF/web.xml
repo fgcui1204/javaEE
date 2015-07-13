@@ -13,51 +13,5 @@
         <servlet-name>mvc-dispatcher</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
-    <!--<servlet>-->
-        <!--<servlet-name>HelloServlet</servlet-name>-->
-        <!--<servlet-class>com.tw.web.IndexServlet</servlet-class>-->
-    <!--</servlet>-->
-
-    <!--<servlet>-->
-        <!--<servlet-name>AddUserServlet</servlet-name>-->
-        <!--<servlet-class>com.tw.web.AddUserServlet</servlet-class>-->
-    <!--</servlet>-->
-
-    <!--<servlet>-->
-        <!--<servlet-name>DeleteUserServlet</servlet-name>-->
-        <!--<servlet-class>com.tw.web.DeleteUserServlet</servlet-class>-->
-    <!--</servlet>-->
-
-    <!--<servlet>-->
-        <!--<servlet-name>GetUserServlet</servlet-name>-->
-        <!--<servlet-class>com.tw.web.GetUserServlet</servlet-class>-->
-    <!--</servlet>-->
-
-    <!--<servlet>-->
-        <!--<servlet-name>UpdateUserServlet</servlet-name>-->
-        <!--<servlet-class>com.tw.web.UpdateUserServlet</servlet-class>-->
-    <!--</servlet>-->
-    <!-- -->
-    <!--<servlet-mapping>-->
-        <!--<servlet-name>UpdateUserServlet</servlet-name>-->
-        <!--<url-pattern>/updateUser</url-pattern>-->
-    <!--</servlet-mapping>-->
-    <!--<servlet-mapping>-->
-        <!--<servlet-name>GetUserServlet</servlet-name>-->
-        <!--<url-pattern>/getUser</url-pattern>-->
-    <!--</servlet-mapping>-->
-    <!--<servlet-mapping>-->
-        <!--<servlet-name>DeleteUserServlet</servlet-name>-->
-        <!--<url-pattern>/deleteUser</url-pattern>-->
-    <!--</servlet-mapping>-->
-
-    <!--<servlet-mapping>-->
-        <!--<servlet-name>HelloServlet</servlet-name>-->
-        <!--<url-pattern>/</url-pattern>-->
-    <!--</servlet-mapping>-->
-
-    <!--<servlet-mapping>-->
-        <!--<servlet-name>AddUserServlet</servlet-name>-->
-        <!--<url-pattern>/addUser</url-pattern>-->
-    <!--</servlet-mapping>-->
+    
 </web-app>
