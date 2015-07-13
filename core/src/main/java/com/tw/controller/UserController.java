@@ -1,6 +1,5 @@
 package com.tw.controller;
 
-import com.sun.net.ssl.HostnameVerifier;
 import com.tw.bean.User;
 import com.tw.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
