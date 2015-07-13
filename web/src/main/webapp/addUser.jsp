@@ -9,7 +9,7 @@
 
 %>
 <h2>添加用户</h2>
-<form action="/web/addUser" method="post">
+<form action="/web/users/post" method="post">
 <table>
   <tr>
     <td>姓名</td>
