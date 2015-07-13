@@ -32,23 +32,23 @@ public class UserController {
     }
 
     @RequestMapping(value = "/updateUser", method = RequestMethod.POST)
-    public ModelAndView updateUser(@RequestParam int id, @RequestParam String name,@RequestParam String sex, @RequestParam String mail, @RequestParam int age){
+    public String updateUser(@RequestParam int id, @RequestParam String name,@RequestParam String sex, @RequestParam String mail, @RequestParam int age){
         User user = new User(id, name,sex, mail,age);
         userService.updateUser(user);
-        return this.getUserList();
+        return "redirect:/";
     }
 
     @RequestMapping(value = "/deleteUser", method = RequestMethod.GET)
-    public ModelAndView deleteUser(@RequestParam int id){
+    public String deleteUser(@RequestParam int id){
         userService.deleteUser(id);
-        return this.getUserList();
+        return "redirect:/";
     }
 
     @RequestMapping(value = "/addUser", method = RequestMethod.POST)
-    public ModelAndView addeUser(@RequestParam String name,@RequestParam String sex, @RequestParam String mail, @RequestParam int age){
+    public String addUser(@RequestParam String name,@RequestParam String sex, @RequestParam String mail, @RequestParam int age){
         User user = new User(name,sex, mail,age);
         userService.addUser(user);
-        return this.getUserList();
+        return "redirect:/";
     }
 
 }
