@@ -28,7 +28,7 @@
   </tr>
 </c:forEach>
   </tbody>
-  <a href="addUser.jsp">添加</a>
+  <a href="../addUser.jsp">添加</a>
 </table>
 </body>
 </html>
