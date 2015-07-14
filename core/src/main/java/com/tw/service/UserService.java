@@ -2,6 +2,7 @@ package com.tw.service;
 
 import com.tw.bean.User;
 import com.tw.dao.UserDao;
+import org.omg.PortableServer.LIFESPAN_POLICY_ID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -30,5 +31,9 @@ public class UserService {
 
     public void updateUser(User user) {
         userDao.updateUser(user);
+    }
+
+    public User login(String name, String password){
+        return userDao.login(name, password);
     }
     }

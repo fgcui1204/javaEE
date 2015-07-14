@@ -4,12 +4,11 @@ import com.tw.bean.User;
 import com.tw.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.ServletRequest;
+import javax.servlet.http.HttpServletRequest;
 
 @Controller
 public class UserController {
@@ -49,7 +48,24 @@ public class UserController {
     public String addUser(@RequestParam String name,@RequestParam String sex, @RequestParam String mail, @RequestParam int age){
         User user = new User(name,sex, mail,age);
         userService.addUser(user);
-        return "redirect:/users/";
+        return "redirect:/users";
+    }
+
+    @RequestMapping(value = "/users/login", method = RequestMethod.POST)
+    public ModelAndView login(HttpServletRequest request, @RequestParam String name, @RequestParam String password){
+
+        User user = userService.login(name, password);
+        ModelAndView modelAndView = new ModelAndView();
+        if(user == null){
+            modelAndView.addObject("message", "用户名/密码错误");
+            modelAndView.setViewName("login");
+            return modelAndView;
+        }else {
+
+            request.getSession().setAttribute("user", user);
+            System.out.println(request.getSession().getAttribute("name") + "---------");
+            return new ModelAndView("redirect:/users");
+        }
     }
 
 }

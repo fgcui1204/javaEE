@@ -6,6 +6,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.springframework.stereotype.Repository;
 
+import javax.jws.soap.SOAPBinding;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,7 +17,7 @@ public class UserDao {
     public List<User> getUserList(){
 
         Session session = HibernateUtil.getSessionFactory().openSession();
-        List<User> userList = new ArrayList<User>();
+        List<User> userList;
         userList = session.createQuery("from User").list();
 
         session.close();
@@ -56,5 +57,16 @@ public class UserDao {
         session.update(user);
         transaction.commit();
         session.close();
+    }
+
+    public User login(String userName, String password){
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        String hql = "from User where name='"+userName+"' and password='"+password+"'";
+        List<User> userList = session.createQuery(hql).list();
+        session.close();
+        if(userList.size() != 0){
+            return userList.get(0);
+        }
+        return null;
     }
 }
