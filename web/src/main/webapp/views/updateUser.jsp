@@ -22,6 +22,10 @@
             <td><input type="text" name="name" value="${user.name}"></td>
         </tr>
         <tr>
+            <td>密码</td>
+            <td><input type="password" name="password" value="${user.password}"></td>
+        </tr>
+        <tr>
             <td>性别</td>
             <td>
                 <c:if test="${user.sex=='男'}">

@@ -10,6 +10,7 @@
 <table border="1">
   <thead>
     <th>姓名</th>
+    <th>密码</th>
     <th>性别</th>
     <th>邮箱</th>
     <th>年龄</th>
@@ -21,6 +22,7 @@
 <c:forEach items="${userList}" var="user">
   <tr>
     <td>${user.name}</td>
+    <td>${user.password}</td>
     <td>${user.sex}</td>
     <td>${user.mail}</td>
     <td>${user.age}</td>
