@@ -7,7 +7,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 
 @Controller
@@ -51,21 +50,34 @@ public class UserController {
         return "redirect:/users";
     }
 
-    @RequestMapping(value = "/users/login", method = RequestMethod.POST)
-    public ModelAndView login(HttpServletRequest request, @RequestParam String name, @RequestParam String password){
+    @RequestMapping(value = "/users/session", method = RequestMethod.POST)
+    public ModelAndView getSession(HttpServletRequest request, @RequestParam String name, @RequestParam String password){
 
         User user = userService.login(name, password);
         ModelAndView modelAndView = new ModelAndView();
         if(user == null){
             modelAndView.addObject("message", "用户名/密码错误");
-            modelAndView.setViewName("login");
-            return modelAndView;
+//            modelAndView.setViewName("login");
+            return new ModelAndView("redirect:/users/login");
         }else {
 
             request.getSession().setAttribute("user", user);
-            System.out.println(request.getSession().getAttribute("name") + "---------");
+            System.out.println(request.getSession().getAttribute("user") + "---------");
             return new ModelAndView("redirect:/users");
         }
+    }
+
+    @RequestMapping(value = "/users/login",method = RequestMethod.GET)
+    public ModelAndView login(){
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("login");
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/users/session/destroy", method = RequestMethod.GET)
+    public ModelAndView destroySession(HttpServletRequest request){
+        request.getSession().invalidate();
+        return new ModelAndView("redirect:/users");
     }
 
 }
