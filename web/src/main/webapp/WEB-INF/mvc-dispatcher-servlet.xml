@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8" ?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
@@ -14,6 +15,16 @@
         <property name="prefix" value="/views/"/>
         <property name="suffix" value=".jsp"/>
     </bean>
+    <!--设置登录拦截器 -->
+    <mvc:interceptors>
+        <mvc:interceptor>
+
+            <mvc:mapping path="/*" />
+            <!--<mvc:mapping path="/*/*" />-->
+            <mvc:mapping path="/*/*/*" />
+            <bean class="com.tw.util.LoginInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
 
     <mvc:annotation-driven/>
 </beans>
