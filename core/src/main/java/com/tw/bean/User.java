@@ -6,16 +6,26 @@ public class User {
     private String sex;
     private String mail;
     private int age;
+    private String password;
 
     public User() {
     }
 
-    public User(int userId, String name, String sex, String mail, int age) {
+    public User(int userId, String name, String sex, String mail, int age, String password) {
         this.userId = userId;
         this.name = name;
         this.sex = sex;
         this.mail = mail;
         this.age = age;
+        this.password = password;
+    }
+
+    public User(String name, String sex, String mail, int age, String password) {
+        this.name = name;
+        this.sex = sex;
+        this.mail = mail;
+        this.age = age;
+        this.password = password;
     }
 
     public User(String name, String sex, String mail, int age) {
@@ -63,5 +73,13 @@ public class User {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }
