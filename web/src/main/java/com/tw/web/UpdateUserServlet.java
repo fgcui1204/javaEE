@@ -20,9 +20,9 @@ public class UpdateUserServlet extends HttpServlet {
         String mail = request.getParameter("mail");
         int age = Integer.parseInt(request.getParameter("age"));
 
-        User user = new User(id,name,sex,mail,age);
+//        User user = new User(id,name,sex,mail,age);
         UserService userService = new UserService();
-        userService.updateUser(user);
+//        userService.updateUser(user);
         response.sendRedirect("/web");
     }
 
