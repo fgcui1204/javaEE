@@ -5,6 +5,7 @@
     <title>user information</title>
 </head>
 <body>
+<a href="/web/users/session/destroy">注销</a>
 <h1>用户信息列表</h1>
 <table border="1">
   <thead>
