@@ -11,6 +11,25 @@
     <title></title>
 </head>
 <body>
+<h1>登录</h1>
+<form action="../users/login" method="post">
+    <table>
+        <tr>
+            <td>用户：</td>
+            <td><input type="input" name="name"></td>
+        </tr>
+        <tr>
+            <td>密码：</td>
+            <td><input type="password" name="password"></td>
+        </tr>
+        <tr>
+            <td colspan="2"><input type="submit" value="登录"></td>
+        </tr>
+        <tr>
+            <td colspan="2" style="color:red">${message}</td>
+        </tr>
+    </table>
 
+</form>
 </body>
 </html>
