@@ -2,10 +2,12 @@ package com.tw.controller;
 
 import com.tw.bean.User;
 import com.tw.service.UserService;
+import com.tw.util.ParseMD5;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import sun.security.krb5.internal.crypto.DesCbcMd5EType;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -13,6 +15,8 @@ import javax.servlet.http.HttpServletRequest;
 public class UserController {
     @Autowired
     private UserService userService;
+    @Autowired
+    private ParseMD5 parseMD5;
 
     @RequestMapping(value = "/users", method = RequestMethod.GET)
     public ModelAndView getUserList(){
@@ -31,8 +35,10 @@ public class UserController {
     }
 
     @RequestMapping(value = "/users/put", method = RequestMethod.POST)
-    public String updateUser(@RequestParam int id, @RequestParam String name,@RequestParam String sex, @RequestParam String mail, @RequestParam int age){
-        User user = new User(id, name,sex, mail,age);
+    public String updateUser(@RequestParam int id, @RequestParam String name, @RequestParam String password, @RequestParam String sex, @RequestParam String mail, @RequestParam int age){
+
+        String userPassword = password.equals(userService.getUser(id).getPassword())?password:parseMD5.parseStrToMd5L32(password);
+        User user = new User(id, name,sex, mail,age,userPassword);
         userService.updateUser(user);
         return "redirect:/users";
     }
@@ -44,8 +50,9 @@ public class UserController {
     }
 
     @RequestMapping(value = "/users/post", method = RequestMethod.POST)
-    public String addUser(@RequestParam String name,@RequestParam String sex, @RequestParam String mail, @RequestParam int age){
-        User user = new User(name,sex, mail,age);
+    public String addUser(@RequestParam String name,@RequestParam String password, @RequestParam String sex, @RequestParam String mail, @RequestParam int age){
+        String password_md5 = parseMD5.parseStrToMd5L32(password);
+        User user = new User(name, sex, mail, age, password_md5);
         userService.addUser(user);
         return "redirect:/users";
     }
