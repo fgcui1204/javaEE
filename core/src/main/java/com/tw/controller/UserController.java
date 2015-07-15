@@ -7,9 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-import sun.security.krb5.internal.crypto.DesCbcMd5EType;
 
-import javax.servlet.http.HttpServletRequest;
 
 @Controller
 public class UserController {
