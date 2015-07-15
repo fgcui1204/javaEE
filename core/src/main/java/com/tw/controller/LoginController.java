@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * Created by fgcui on 7/14/15.
@@ -23,25 +25,47 @@ public class LoginController {
     @Autowired
     private ParseMD5 parseMD5;
 
-    @RequestMapping(value = "/users/session", method = RequestMethod.POST)
-    public ModelAndView getSession(HttpServletRequest request, @RequestParam String name, @RequestParam String password){
+    @RequestMapping(value = "/users/login", method = RequestMethod.POST)
+    public ModelAndView getSession(HttpServletRequest request, HttpServletResponse response, @RequestParam String name, @RequestParam String password){
 
         User user = userService.login(name, parseMD5.parseStrToMd5L32(password));
         ModelAndView modelAndView = new ModelAndView();
+
+        Cookie[] cookies = request.getCookies();
+        String reqUrl = null;
+        for (Cookie cookie: cookies){
+            if ("reqUrl".equals(cookie.getName())){
+                reqUrl = cookie.getValue();
+            }
+        }
+
         if(user == null){
+
             modelAndView.addObject("message", "用户名/密码错误");
-//            modelAndView.setViewName("login");
-            return new ModelAndView("redirect:/users/login");
+            modelAndView.setViewName("login");
+            return modelAndView;
+        }else if(reqUrl == null) {
+
+            request.getSession().setAttribute("user", user);
+            return new ModelAndView("redirect:/users");
         }else {
 
             request.getSession().setAttribute("user", user);
-            System.out.println(request.getSession().getAttribute("user") + "---------");
-            return new ModelAndView("redirect:/users");
+            for (Cookie cookie: cookies){
+                if ("reqUrl".equals(cookie.getName())){
+                    cookie.setValue(null);
+                    cookie.setMaxAge(0);
+                    cookie.setPath("/web/users");
+                    response.addCookie(cookie);
+                }
+            }
+            return new ModelAndView("redirect:/"+reqUrl);
         }
     }
 
     @RequestMapping(value = "/users/login",method = RequestMethod.GET)
     public ModelAndView login(){
+
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("login");
         return modelAndView;
@@ -49,8 +73,10 @@ public class LoginController {
 
     @RequestMapping(value = "/users/session/destroy", method = RequestMethod.GET)
     public ModelAndView destroySession(HttpServletRequest request){
+
         request.getSession().invalidate();
-        return new ModelAndView("redirect:/users");
+
+        return new ModelAndView("redirect:/users/login");
     }
 
 }
