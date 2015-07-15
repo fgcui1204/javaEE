@@ -17,13 +17,14 @@
     </bean>
     <!--设置登录拦截器 -->
     <mvc:interceptors>
-        <mvc:interceptor>
+        <bean class="com.tw.util.LoginInterceptor"></bean>
+        <!--<mvc:interceptor>-->
 
-            <mvc:mapping path="/*" />
-            <!--<mvc:mapping path="/*/*" />-->
-            <mvc:mapping path="/*/*/*" />
-            <bean class="com.tw.util.LoginInterceptor"/>
-        </mvc:interceptor>
+            <!--<mvc:mapping path="/" />-->
+            <!--&lt;!&ndash;<mvc:mapping path="/*/*" />&ndash;&gt;-->
+            <!--&lt;!&ndash;<mvc:mapping path="/*/*/*" />&ndash;&gt;-->
+            <!--<bean class="com.tw.util.LoginInterceptor"/>-->
+        <!--</mvc:interceptor>-->
     </mvc:interceptors>
 
     <mvc:annotation-driven/>
