@@ -1,0 +1,1 @@
+ALTER TABLE users add password VARCHAR(200) NOT  NULL ;

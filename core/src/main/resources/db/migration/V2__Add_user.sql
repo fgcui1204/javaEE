@@ -1,1 +1,0 @@
-INSERT INTO users values(NULL ,'崔福罡','男','fgcui@outlook.com',23);
