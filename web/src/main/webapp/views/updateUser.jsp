@@ -15,7 +15,7 @@
 <body>
 <h2>修改用户信息</h2>
 <form action="/web/users/put" method="post">
-    <input type="hidden" name="id" value="${user.userId}">
+    <input type="hidden" name="id" value="${user.id}">
     <table>
         <tr>
             <td>姓名</td>
