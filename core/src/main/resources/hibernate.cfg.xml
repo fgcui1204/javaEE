@@ -12,6 +12,7 @@
         <property name="show_sql">true</property>
         <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
         <property name="hibernate.hbm2ddl.auto">update</property>
-        <mapping resource="User.hbm.xml"/>
+        <!--<mapping resource="User.hbm.xml"/>-->
+        <mapping class="com.tw.bean.User"/>
     </session-factory>
 </hibernate-configuration> 
