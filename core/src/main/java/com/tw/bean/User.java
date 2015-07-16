@@ -1,7 +1,11 @@
 package com.tw.bean;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name="users")
 public class User {
-    private int userId;
+    private int id;
     private String name;
     private String sex;
     private String mail;
@@ -11,8 +15,8 @@ public class User {
     public User() {
     }
 
-    public User(int userId, String name, String sex, String mail, int age, String password) {
-        this.userId = userId;
+    public User(int id, String name, String sex, String mail, int age, String password) {
+        this.id = id;
         this.name = name;
         this.sex = sex;
         this.mail = mail;
@@ -35,14 +39,17 @@ public class User {
         this.age = age;
     }
 
-    public int getUserId() {
-        return userId;
+    @Id
+    @GeneratedValue
+    public int getId() {
+        return id;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setId(int id) {
+        this.id = id;
     }
 
+    @Column(name="name")
     public String getName() {
         return name;
     }
@@ -51,6 +58,7 @@ public class User {
         this.name = name;
     }
 
+    @Column(name="sex")
     public String getSex() {
         return sex;
     }
@@ -59,6 +67,7 @@ public class User {
         this.sex = sex;
     }
 
+    @Column(name="mail")
     public String getMail() {
         return mail;
     }
@@ -67,6 +76,7 @@ public class User {
         this.mail = mail;
     }
 
+    @Column(name="age")
     public int getAge() {
         return age;
     }
@@ -75,6 +85,7 @@ public class User {
         this.age = age;
     }
 
+    @Column(name="password")
     public String getPassword() {
         return password;
     }
