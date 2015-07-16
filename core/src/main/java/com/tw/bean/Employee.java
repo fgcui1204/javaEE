@@ -1,7 +1,20 @@
 package com.tw.bean;
 
-/**
- * Created by fgcui on 7/16/15.
- */
+
 public class Employee {
+    private int id;
+    private String role;
+    private int userId;
+
+    public int getId() {
+        return id;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
 }

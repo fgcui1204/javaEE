@@ -1,7 +1,19 @@
 package com.tw.bean;
 
-/**
- * Created by fgcui on 7/16/15.
- */
 public class Customer {
+    private int id;
+    private String name;
+    private String telphone;
+
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getTelphone() {
+        return telphone;
+    }
 }
