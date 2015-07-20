@@ -1,6 +1,6 @@
 package com.tw.dao;
 
-import com.tw.bean.Employee;
+import com.tw.entity.Employee;
 import com.tw.util.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;

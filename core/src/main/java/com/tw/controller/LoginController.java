@@ -1,7 +1,7 @@
 package com.tw.controller;
 
-import com.tw.bean.Employee;
-import com.tw.bean.User;
+import com.tw.entity.Employee;
+import com.tw.entity.User;
 import com.tw.service.EmployeeService;
 import com.tw.service.UserService;
 import com.tw.util.ParseMD5;

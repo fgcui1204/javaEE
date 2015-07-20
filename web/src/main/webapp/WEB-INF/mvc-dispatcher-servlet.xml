@@ -23,7 +23,7 @@
             <!--<mvc:mapping path="/" />-->
             <!--&lt;!&ndash;<mvc:mapping path="/*/*" />&ndash;&gt;-->
             <!--&lt;!&ndash;<mvc:mapping path="/*/*/*" />&ndash;&gt;-->
-            <!--<bean class="com.tw.util.LoginInterceptor"/>-->
+            <!--<entity class="com.tw.util.LoginInterceptor"/>-->
         <!--</mvc:interceptor>-->
     </mvc:interceptors>
 

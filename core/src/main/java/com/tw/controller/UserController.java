@@ -1,6 +1,6 @@
 package com.tw.controller;
 
-import com.tw.bean.User;
+import com.tw.entity.User;
 import com.tw.service.UserService;
 import com.tw.util.ParseMD5;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,13 +1,11 @@
 package com.tw.dao;
 
-import com.tw.bean.User;
+import com.tw.entity.User;
 import com.tw.util.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.springframework.stereotype.Repository;
 
-import javax.jws.soap.SOAPBinding;
-import java.util.ArrayList;
 import java.util.List;
 
 @Repository
@@ -18,7 +16,7 @@ public class UserDao {
 
         Session session = HibernateUtil.getSessionFactory().openSession();
         List<User> userList;
-        userList = session.createQuery("from User").list();
+        userList = session.createQuery("select u.id, u.name, e.role from User as u, Employee as e where u.id=e.userId").list();
 
         session.close();
         return userList;

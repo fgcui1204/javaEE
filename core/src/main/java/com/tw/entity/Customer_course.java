@@ -1,4 +1,4 @@
-package com.tw.bean;
+package com.tw.entity;
 
 public class Customer_course {
     private int id;
