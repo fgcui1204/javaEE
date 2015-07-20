@@ -23,7 +23,8 @@
             <td><input type="password" name="password"></td>
         </tr>
         <tr>
-            <td colspan="2"><input type="submit" value="登录"></td>
+            <td><input type="submit" value="登录"></td>
+            <td><a href="register.jsp">注册</a></td>
         </tr>
         <tr>
             <td colspan="2" style="color:red">${message}</td>
