@@ -36,4 +36,8 @@ public class UserService {
     public User login(String name, String password){
         return userDao.login(name, password);
     }
+
+    public int getUserId(String name){
+        return userDao.getUserId(name);
+    }
     }

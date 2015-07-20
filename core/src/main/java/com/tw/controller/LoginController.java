@@ -1,6 +1,8 @@
 package com.tw.controller;
 
+import com.tw.bean.Employee;
 import com.tw.bean.User;
+import com.tw.service.EmployeeService;
 import com.tw.service.UserService;
 import com.tw.util.ParseMD5;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,8 +24,12 @@ public class LoginController {
 
     @Autowired
     private UserService userService;
+
     @Autowired
     private ParseMD5 parseMD5;
+
+    @Autowired
+    private EmployeeService employeeService;
 
     @RequestMapping(value = "/users/login", method = RequestMethod.POST)
     public ModelAndView getSession(HttpServletRequest request, HttpServletResponse response, @RequestParam String name, @RequestParam String password){
@@ -77,6 +83,19 @@ public class LoginController {
         request.getSession().invalidate();
 
         return new ModelAndView("redirect:/users/login");
+    }
+
+
+    @RequestMapping(value = "/users/register", method = RequestMethod.POST)
+    public String registerUser(@RequestParam String name,@RequestParam String password, @RequestParam String role, @RequestParam String sex, @RequestParam String mail, @RequestParam int age){
+        String password_md5 = parseMD5.parseStrToMd5L32(password);
+        User user = new User(name, sex, mail, age, password_md5);
+        userService.addUser(user);
+        int userId = userService.getUserId(name);
+        user.setId(userId);
+        Employee employee = new Employee(role, user);
+        employeeService.addEmployee(employee);
+        return "redirect:/users";
     }
 
 }

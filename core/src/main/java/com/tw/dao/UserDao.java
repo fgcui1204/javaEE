@@ -33,6 +33,14 @@ public class UserDao {
         session.close();
     }
 
+    public int getUserId(String name){
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        String hql = "from User where name='"+name+"'";
+        User user = (User)session.createQuery(hql).list().get(0);
+        session.close();
+        return user.getId();
+    }
+
     public void deleteUser(int id){
 
         Session session = HibernateUtil.getSessionFactory().openSession();

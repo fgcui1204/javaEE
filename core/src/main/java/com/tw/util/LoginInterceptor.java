@@ -15,7 +15,7 @@ public class LoginInterceptor implements HandlerInterceptor {
         String reqUrl = request.getRequestURI().replace(request.getContextPath(), "");
 
         //当url地址为登录的url的时候跳过拦截器
-        if (reqUrl.contains("/login")) {
+        if (reqUrl.contains("/login") || reqUrl.contains("/register")) {
 
             return true;
         }

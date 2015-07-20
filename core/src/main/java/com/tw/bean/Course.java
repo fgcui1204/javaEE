@@ -9,6 +9,7 @@ public class Course {
     private int id;
     private String name;
     private Set<Customer> customers;
+    private Set<Time> times;
 
     @Id
     @GeneratedValue
@@ -35,5 +36,14 @@ public class Course {
 
     public void setCustomers(Set<Customer> customers) {
         this.customers = customers;
+    }
+
+    @OneToMany(mappedBy = "time")
+    public Set<Time> getTimes() {
+        return times;
+    }
+
+    public void setTimes(Set<Time> times) {
+        this.times = times;
     }
 }

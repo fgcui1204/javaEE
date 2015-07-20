@@ -4,7 +4,7 @@
 
 <hibernate-mapping>
     <class name="com.tw.bean.User" table="users">
-        <id name="userId" type="java.lang.Integer">
+        <id name="id" type="java.lang.Integer">
             <column name="id" />
             <generator class="native" />
         </id>
