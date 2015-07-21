@@ -1,10 +1,13 @@
 package com.tw.dao;
 
 import com.tw.entity.Employee;
+import com.tw.entity.User;
 import com.tw.util.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Repository
 public class EmployeeDao {
@@ -17,4 +20,36 @@ public class EmployeeDao {
         transaction.commit();
         session.close();
     }
+
+    public List<Employee> getEmployeeList() {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        List<Employee> list = session.createQuery("select  new Employee(e.id,e.name,e.role,e.sex,e.mail,e.age) from Employee as e, User as u where e.id=u.employee.id").list();
+        System.out.println(list.size());
+        session.close();
+        return list;
+    }
+
+    public void delete(int id) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction transaction = session.beginTransaction();
+        User user = this.getUser(id);
+        session.delete(user);
+        transaction.commit();
+        session.close();
+    }
+
+    public User getUser(int id){
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        User user = (User)session.createQuery("from User where employeeId="+id).list().get(0);
+        session.close();
+        return user;
+    }
+
+//    public int getEmployeeId(String name){
+//        Session session = HibernateUtil.getSessionFactory().openSession();
+//        String hql = "from Employee where name='"+name+"'";
+//        Employee employee = (Employee)session.createQuery(hql).list().get(0);
+//        session.close();
+//        return employee.getId();
+//    }
 }

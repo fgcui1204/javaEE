@@ -5,6 +5,8 @@ import com.tw.dao.EmployeeDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class EmployeeService {
     @Autowired
@@ -13,4 +15,16 @@ public class EmployeeService {
     public void addEmployee(Employee employee){
         employeeDao.addEmployee(employee);
     }
+
+    public List<Employee> getEmployeehList() {
+        return employeeDao.getEmployeeList();
+    }
+
+    public void delete(int id) {
+        employeeDao.delete(id);
+    }
+
+//    public int getEmployeeId(String name){
+//        return employeeDao.getEmployeeId(name);
+//    }
 }

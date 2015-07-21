@@ -1,10 +1,14 @@
 package com.tw.dao;
 
 import com.tw.entity.Coach;
+import com.tw.entity.Employee;
+import com.tw.entity.User;
 import com.tw.util.HibernateUtil;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.springframework.stereotype.Repository;
 
+import java.util.EnumMap;
 import java.util.List;
 
 @Repository
@@ -15,4 +19,15 @@ public class CoachDao {
 
         return coachList;
     }
+
+//    public void deleteCoach(int id) {
+//        Session session = HibernateUtil.getSessionFactory().openSession();
+//        Transaction transaction = session.beginTransaction();
+//        User user = (User)session.get(User.class, id);
+//        Employee employee = (Employee)session.createQuery("from Employee where userId="+id).list().get(0);
+//        employee.setUser(null);
+//        session.delete(user);
+//        transaction.commit();
+//        session.close();
+//    }
 }

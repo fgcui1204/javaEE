@@ -37,36 +37,39 @@ public class LoginController {
         User user = userService.login(name, parseMD5.parseStrToMd5L32(password));
         ModelAndView modelAndView = new ModelAndView();
 
-        Cookie[] cookies = request.getCookies();
-        String reqUrl = null;
-        for (Cookie cookie: cookies){
-            if ("reqUrl".equals(cookie.getName())){
-                reqUrl = cookie.getValue();
-            }
-        }
+//        Cookie[] cookies = request.getCookies();
+//        String reqUrl = null;
+//        for (Cookie cookie: cookies){
+//            if ("reqUrl".equals(cookie.getName())){
+//                reqUrl = cookie.getValue();
+//            }
+//        }
 
-        if(user == null){
+        if(user == null) {
 
             modelAndView.addObject("message", "用户名/密码错误");
             modelAndView.setViewName("login");
             return modelAndView;
-        }else if(reqUrl == null) {
-
-            request.getSession().setAttribute("user", user);
-            return new ModelAndView("redirect:/coaches");
-        }else {
-
-            request.getSession().setAttribute("user", user);
-            for (Cookie cookie: cookies){
-                if ("reqUrl".equals(cookie.getName())){
-                    cookie.setValue(null);
-                    cookie.setMaxAge(0);
-                    cookie.setPath("/web/coaches");
-                    response.addCookie(cookie);
-                }
-            }
-            return new ModelAndView("redirect:/"+reqUrl);
+//        }else if(reqUrl == null) {
+//
+//            request.getSession().setAttribute("user", user);
+//            return new ModelAndView("redirect:/employees");
+//        }else {
+//
+//            request.getSession().setAttribute("user", user);
+//            for (Cookie cookie: cookies){
+//                if ("reqUrl".equals(cookie.getName())){
+//                    cookie.setValue(null);
+//                    cookie.setMaxAge(0);
+//                    cookie.setPath("/web/employees");
+//                    response.addCookie(cookie);
+//                }
+//            }
+//            return new ModelAndView("redirect:/"+reqUrl);
+//        }
         }
+        return new ModelAndView("redirect:/employees");
+
     }
 
     @RequestMapping(value = "/users/login",method = RequestMethod.GET)
@@ -89,13 +92,11 @@ public class LoginController {
     @RequestMapping(value = "/users/register", method = RequestMethod.POST)
     public String registerUser(@RequestParam String name,@RequestParam String password, @RequestParam String role, @RequestParam String sex, @RequestParam String mail, @RequestParam int age){
         String password_md5 = parseMD5.parseStrToMd5L32(password);
-        User user = new User(name, sex, mail, age, password_md5);
-        userService.addUser(user);
-        int userId = userService.getUserId(name);
-        user.setId(userId);
-        Employee employee = new Employee(role, user);
+        Employee employee = new Employee(name,role,sex,mail,age);
         employeeService.addEmployee(employee);
-        return "redirect:/users";
+        User user = new User(name,password_md5,employee);
+        userService.addUser(user);
+        return "redirect:/employees";
     }
 
 }

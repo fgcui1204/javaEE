@@ -1,8 +1,8 @@
-INSERT INTO employees VALUES (NULL ,'OPs', 1);
-INSERT INTO employees VALUES (NULL ,'HR', 2);
-INSERT INTO employees VALUES (NULL ,'Coach', 3);
-INSERT INTO employees VALUES (NULL ,'Coach', 5);
-INSERT INTO employees VALUES (NULL ,'Coach', 6);
+INSERT INTO employees VALUES (NULL ,'OPs', '燕子','女', 'yanzi@thoughtworks.com', 23);
+INSERT INTO employees VALUES (NULL ,'Coach', '薛倩','女', 'yanzi@thoughtworks.com', 23);
+INSERT INTO employees VALUES (NULL ,'Coach', '小明','男', 'yanzi@thoughtworks.com', 23);
+INSERT INTO employees VALUES (NULL ,'OPs', '小主','女', 'yanzi@thoughtworks.com', 23);
+INSERT INTO employees VALUES (NULL ,'HR', '欢哥','女', 'yanzi@thoughtworks.com', 23);
 
 INSERT INTO courses VALUES (NULL ,'体操');
 INSERT INTO courses VALUES (NULL ,'瑜伽');

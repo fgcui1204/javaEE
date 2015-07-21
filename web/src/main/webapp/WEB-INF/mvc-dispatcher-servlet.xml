@@ -16,16 +16,9 @@
         <property name="suffix" value=".jsp"/>
     </bean>
     <!--设置登录拦截器 -->
-    <mvc:interceptors>
-        <bean class="com.tw.util.LoginInterceptor"></bean>
-        <!--<mvc:interceptor>-->
-
-            <!--<mvc:mapping path="/" />-->
-            <!--&lt;!&ndash;<mvc:mapping path="/*/*" />&ndash;&gt;-->
-            <!--&lt;!&ndash;<mvc:mapping path="/*/*/*" />&ndash;&gt;-->
-            <!--<entity class="com.tw.util.LoginInterceptor"/>-->
-        <!--</mvc:interceptor>-->
-    </mvc:interceptors>
+    <!--<mvc:interceptors>-->
+        <!--<bean class="com.tw.util.LoginInterceptor"></bean>-->
+    <!--</mvc:interceptors>-->
 
     <mvc:annotation-driven/>
 </beans>
