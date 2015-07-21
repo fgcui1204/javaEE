@@ -1,7 +1,18 @@
 package com.tw.service;
 
-/**
- * Created by fgcui on 7/20/15.
- */
+import com.tw.dao.CoachDao;
+import com.tw.entity.Coach;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+@Service
 public class CoachService {
+    @Autowired
+    private CoachDao coachDao;
+
+    public List<Coach> getCoachList(){
+        return coachDao.getCoachList();
+    }
 }

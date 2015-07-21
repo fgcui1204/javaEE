@@ -15,5 +15,6 @@
         <!--<mapping resource="User.hbm.xml"/>-->
         <mapping class="com.tw.entity.User"/>
         <mapping class="com.tw.entity.Employee"/>
+        <mapping class="com.tw.entity.Coach"/>
     </session-factory>
 </hibernate-configuration> 

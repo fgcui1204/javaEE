@@ -53,7 +53,7 @@ public class LoginController {
         }else if(reqUrl == null) {
 
             request.getSession().setAttribute("user", user);
-            return new ModelAndView("redirect:/users");
+            return new ModelAndView("redirect:/coaches");
         }else {
 
             request.getSession().setAttribute("user", user);
@@ -61,7 +61,7 @@ public class LoginController {
                 if ("reqUrl".equals(cookie.getName())){
                     cookie.setValue(null);
                     cookie.setMaxAge(0);
-                    cookie.setPath("/web/users");
+                    cookie.setPath("/web/coaches");
                     response.addCookie(cookie);
                 }
             }
