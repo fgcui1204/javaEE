@@ -20,12 +20,6 @@ public class CourseController {
     public ModelAndView getCoachList(){
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("courseList");
-        System.out.println(courseService.getCourseList().get(0).getName() + "-----------");
-        for(Course course:courseService.getCourseList()){
-
-            System.out.println(course.getName()+"########################");
-
-        }
         modelAndView.addObject("courseList", courseService.getCourseList());
         return modelAndView;
     }

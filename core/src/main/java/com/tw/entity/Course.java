@@ -11,6 +11,7 @@ import java.util.Set;
 public class Course {
     private int id;
     private String name;
+    private String description;
     private Set<Customer> customers;
     private Set<Schedule> schedules;
 
@@ -34,6 +35,15 @@ public class Course {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Column(name = "description")
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     @OneToMany(mappedBy = "course")

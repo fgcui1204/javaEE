@@ -93,7 +93,7 @@ public class Employee {
     }
 
     @OneToMany(mappedBy = "employee")
-    @LazyCollection(LazyCollectionOption.EXTRA)
+//    @LazyCollection(LazyCollectionOption.EXTRA)
     public Set<Schedule> getSchedules() {
         return schedules;
     }
