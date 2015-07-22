@@ -11,6 +11,7 @@
 <a href="/web/employees">员工管理</a>
 <a href="/web/users/session/destroy">Customer管理</a>
 <a href="/web/courses">课程管理</a>
+<a href="/web/schedules">课表管理</a>
 <a href="/web/users/session/destroy">添加私教</a>
 
 <h1>课程维护</h1>
