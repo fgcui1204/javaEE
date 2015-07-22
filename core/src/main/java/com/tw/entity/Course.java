@@ -8,8 +8,25 @@ import java.util.Set;
 public class Course {
     private int id;
     private String name;
+    private String time;
+    private Employee employee;
     private Set<Customer> customers;
-    private Set<Time> times;
+
+    public Course() {
+    }
+
+    public Course(int id, String name, String time) {
+        this.id = id;
+        this.name = name;
+        this.time = time;
+    }
+
+    public Course(int id, String name, String time, Employee employee) {
+        this.id = id;
+        this.name = name;
+        this.time = time;
+        this.employee = employee;
+    }
 
     @Id
     @GeneratedValue
@@ -21,6 +38,7 @@ public class Course {
         this.id = id;
     }
 
+    @Column(name="name")
     public String getName() {
         return name;
     }
@@ -29,21 +47,31 @@ public class Course {
         this.name = name;
     }
 
-    @ManyToMany(mappedBy = "teachers")
+    @Column(name="time")
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
+
+    @OneToOne
+    @JoinColumn(name="coachId")
+    public Employee getEmployee() {
+        return employee;
+    }
+
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
+    }
+
+    @ManyToMany(mappedBy = "courses")
     public Set<Customer> getCustomers() {
         return customers;
     }
 
     public void setCustomers(Set<Customer> customers) {
         this.customers = customers;
-    }
-
-    @OneToMany(mappedBy = "time")
-    public Set<Time> getTimes() {
-        return times;
-    }
-
-    public void setTimes(Set<Time> times) {
-        this.times = times;
     }
 }

@@ -24,7 +24,6 @@ public class EmployeeDao {
     public List<Employee> getEmployeeList() {
         Session session = HibernateUtil.getSessionFactory().openSession();
         List<Employee> list = session.createQuery("select  new Employee(e.id,e.name,e.role,e.sex,e.mail,e.age) from Employee as e, User as u where e.id=u.employee.id").list();
-        System.out.println(list.size());
         session.close();
         return list;
     }

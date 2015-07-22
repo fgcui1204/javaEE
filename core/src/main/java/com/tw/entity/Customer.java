@@ -11,14 +11,18 @@ public class Customer {
     private String telphone;
     private Set<Course> courses;
 
+    @Id
+    @GeneratedValue
     public int getId() {
         return id;
     }
 
+    @Column(name = "name")
     public String getName() {
         return name;
     }
 
+    @Column(name = "telphone")
     public String getTelphone() {
         return telphone;
     }
@@ -33,8 +37,7 @@ public class Customer {
         this.courses = courses;
     }
 
-    @Id
-    @GeneratedValue
+
     public void setId(int id) {
         this.id = id;
     }

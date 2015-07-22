@@ -16,5 +16,7 @@
         <mapping class="com.tw.entity.User"/>
         <mapping class="com.tw.entity.Employee"/>
         <mapping class="com.tw.entity.Coach"/>
+        <mapping class="com.tw.entity.Course"/>
+        <mapping class="com.tw.entity.Customer"/>
     </session-factory>
 </hibernate-configuration> 

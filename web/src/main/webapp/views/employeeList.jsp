@@ -10,7 +10,7 @@
 <a href="/web/users/">用户管理</a>
 <a href="/web/coaches">员工管理</a>
 <a href="/web/users/session/destroy">Customer管理</a>
-<a href="/web/users/session/destroy">课程管理</a>
+<a href="/web/courses">课程管理</a>
 <a href="/web/users/session/destroy">添加私教</a>
 
 <h1>员工信息维护</h1>

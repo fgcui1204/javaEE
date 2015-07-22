@@ -1,7 +1,32 @@
 package com.tw.controller;
 
-/**
- * Created by fgcui on 7/21/15.
- */
+import com.tw.entity.Course;
+import com.tw.service.CourseService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
+
+
+@Controller
+@RequestMapping
 public class CourseController {
+
+    @Autowired
+    private CourseService courseService;
+
+    @RequestMapping(value = "/courses", method = RequestMethod.GET)
+    public ModelAndView getCoachList(){
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("courseList");
+        System.out.println(courseService.getCourseList().get(0).getName() + "-----------");
+        for(Course course:courseService.getCourseList()){
+
+            System.out.println(course.getName()+"########################");
+
+        }
+        modelAndView.addObject("courseList", courseService.getCourseList());
+        return modelAndView;
+    }
 }
