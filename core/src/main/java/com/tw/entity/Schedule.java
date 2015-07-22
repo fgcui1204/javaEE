@@ -14,6 +14,12 @@ public class Schedule {
     public Schedule() {
     }
 
+    public Schedule(String day, Course course, Employee employee) {
+        this.day = day;
+        this.course = course;
+        this.employee = employee;
+    }
+
     @Id
     @GeneratedValue
     public int getId() {

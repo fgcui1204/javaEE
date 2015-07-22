@@ -8,7 +8,7 @@
 <%
 
 %>
-<h2>注册用户</h2>
+<h2>添加员工</h2>
 <form action="/web/users/register" method="post">
     <table>
         <tr>
@@ -39,7 +39,7 @@
             <td><input type="text" name="age" value="20"></td>
         </tr>
     </table>
-    <input type="submit" value="注册">
+    <input type="submit" value="确定">
 </form>
 </body>
 </html>

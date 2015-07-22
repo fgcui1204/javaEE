@@ -19,4 +19,17 @@ public class ScheduleService {
     public List<Schedule> getScheduleList() {
         return scheduleDao.getScheduleList();
     }
-}
+
+    public void create(Schedule schedule) {
+        scheduleDao.create(schedule);
+    }
+
+    public void delete(int id) {
+        scheduleDao.delete(id);
+    }
+
+    public Schedule getSchedule(int id){
+        return scheduleDao.getSchedule(id);
+    }
+
+    }

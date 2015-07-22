@@ -24,6 +24,14 @@ public class EmployeeService {
         employeeDao.delete(id);
     }
 
+    public List<Employee> getCoaches(){
+        return employeeDao.getCoaches();
+    }
+
+    public Employee getEmployeeById(int id){
+        return employeeDao.getEmployeeById(id);
+    }
+
 //    public int getEmployeeId(String name){
 //        return employeeDao.getEmployeeId(name);
 //    }

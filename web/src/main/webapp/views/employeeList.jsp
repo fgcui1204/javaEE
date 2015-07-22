@@ -40,5 +40,6 @@
     </c:forEach>
     </tbody>
 </table>
+<a href="views/register.jsp">添加员工</a>
 </body>
 </html>

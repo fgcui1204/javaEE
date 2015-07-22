@@ -32,12 +32,12 @@
             <td>${schedule.day}</td>
             <td>${schedule.course.name}</td>
             <td>${schedule.employee.name}</td>
-            <td><a href="/web/employees/delete/${schedule.id}">删除</a></td>
-            <td><a href="/web/employees/${schedule.id}">修改</a></td>
+            <td><a href="/web/schedules/delete/${schedule.id}">删除</a></td>
+            <td><a href="/web/schedules/update/${schedule.id}">修改</a></td>
         </tr>
     </c:forEach>
     </tbody>
 </table>
-
+<a href="/web/schedules/create">添加课表</a>
 </body>
 </html>
