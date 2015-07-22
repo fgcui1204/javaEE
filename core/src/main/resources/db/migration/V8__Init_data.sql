@@ -5,10 +5,10 @@ INSERT INTO employees VALUES (NULL ,'Coach', '开神','男', 'yanzi@thoughtworks
 INSERT INTO employees VALUES (NULL ,'Coach', '小主','女', 'yanzi@thoughtworks.com', 23);
 INSERT INTO employees VALUES (NULL ,'HR', '欢哥','女', 'yanzi@thoughtworks.com', 23);
 
-INSERT INTO courses VALUES (NULL ,'体操',2,'2014-5-3');
-INSERT INTO courses VALUES (NULL ,'瑜伽',3,'2014-5-3');
-INSERT INTO courses VALUES (NULL ,'杠铃',4,'2014-5-3');
-INSERT INTO courses VALUES (NULL ,'私教',1,'2015-6-3');
+INSERT INTO courses VALUES (NULL ,'体操','这个是个体操课');
+INSERT INTO courses VALUES (NULL ,'瑜伽','这个是个瑜伽课');
+INSERT INTO courses VALUES (NULL ,'杠铃','这个是杠铃课');
+INSERT INTO courses VALUES (NULL ,'私教','这个是私教课');
 
 INSERT INTO customers VALUES (NULL ,'顾客1','123456');
 INSERT INTO customers VALUES (NULL ,'顾客3','123456');

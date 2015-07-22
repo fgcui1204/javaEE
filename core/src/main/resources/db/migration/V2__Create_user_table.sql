@@ -4,5 +4,5 @@ create table users (
     name varchar(50) not null,
     password VARCHAR(200) NOT  NULL,
     employeeId int ,
-    FOREIGN KEY (employeeId) REFERENCES employees(id)
+    FOREIGN KEY (employeeId) REFERENCES employees(id) ON DELETE CASCADE
 );
