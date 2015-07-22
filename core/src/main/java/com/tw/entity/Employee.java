@@ -1,6 +1,10 @@
 package com.tw.entity;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name="employees")
@@ -11,6 +15,7 @@ public class Employee {
     private String sex;
     private String mail;
     private int age;
+    private Set<Schedule> schedules;
 
     public Employee(int id, String name, String role, String sex, String mail, int age) {
         this.id = id;
@@ -87,4 +92,13 @@ public class Employee {
         this.age = age;
     }
 
+    @OneToMany(mappedBy = "employee")
+    @LazyCollection(LazyCollectionOption.EXTRA)
+    public Set<Schedule> getSchedules() {
+        return schedules;
+    }
+
+    public void setSchedules(Set<Schedule> schedules) {
+        this.schedules = schedules;
+    }
 }

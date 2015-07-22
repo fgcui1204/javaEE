@@ -1,5 +1,8 @@
 package com.tw.entity;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -8,24 +11,10 @@ import java.util.Set;
 public class Course {
     private int id;
     private String name;
-    private String time;
-    private Employee employee;
     private Set<Customer> customers;
+    private Set<Schedule> schedules;
 
     public Course() {
-    }
-
-    public Course(int id, String name, String time) {
-        this.id = id;
-        this.name = name;
-        this.time = time;
-    }
-
-    public Course(int id, String name, String time, Employee employee) {
-        this.id = id;
-        this.name = name;
-        this.time = time;
-        this.employee = employee;
     }
 
     @Id
@@ -47,23 +36,14 @@ public class Course {
         this.name = name;
     }
 
-    @Column(name="time")
-    public String getTime() {
-        return time;
+    @OneToMany(mappedBy = "course")
+    @LazyCollection(LazyCollectionOption.EXTRA)
+    public Set<Schedule> getSchedules() {
+        return schedules;
     }
 
-    public void setTime(String time) {
-        this.time = time;
-    }
-
-    @OneToOne
-    @JoinColumn(name="coachId")
-    public Employee getEmployee() {
-        return employee;
-    }
-
-    public void setEmployee(Employee employee) {
-        this.employee = employee;
+    public void setSchedules(Set<Schedule> schedules) {
+        this.schedules = schedules;
     }
 
     @ManyToMany(mappedBy = "courses")
