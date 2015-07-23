@@ -14,6 +14,12 @@ public class Customer {
     public Customer() {
     }
 
+    public Customer(int id, String name, String telphone) {
+        this.id = id;
+        this.name = name;
+        this.telphone = telphone;
+    }
+
     public Customer(String name, String telphone) {
         this.name = name;
         this.telphone = telphone;

@@ -44,4 +44,19 @@ public class CustomerController {
         customerService.delete(id);
         return new ModelAndView("redirect:/customers");
     }
+
+    @RequestMapping(value = "/customers/update/{id}", method = RequestMethod.GET)
+    public ModelAndView getCustomer(@PathVariable int id){
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("updateCustomer");
+        modelAndView.addObject("customer", customerService.getCustomerById(id));
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/customers/update", method = RequestMethod.POST)
+    public ModelAndView update(@RequestParam int id, @RequestParam String name, @RequestParam String telphone){
+        Customer customer = new Customer(id, name, telphone);
+        customerService.update(customer);
+        return new ModelAndView("redirect:/customers");
+    }
 }

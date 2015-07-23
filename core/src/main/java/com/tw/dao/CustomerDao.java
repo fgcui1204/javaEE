@@ -34,4 +34,19 @@ public class CustomerDao {
         transaction.commit();
         session.close();
     }
+
+    public Customer getCustomerById(int id) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Customer customer = (Customer)session.get(Customer.class, id);
+        session.close();
+        return customer;
+    }
+
+    public void update(Customer customer) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction transaction = session.beginTransaction();
+        session.update(customer);
+        transaction.commit();
+        session.close();
+    }
 }
