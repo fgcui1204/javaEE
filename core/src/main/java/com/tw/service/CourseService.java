@@ -35,4 +35,8 @@ public class CourseService {
     public void updateCourse(Course course) {
         courseDao.updateCourse(course);
     }
-}
+
+    public List<Course> getUnArrangeSchedule(){
+        return courseDao.getUnArrangeSchedule();
+    }
+    }

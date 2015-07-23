@@ -32,6 +32,13 @@ public class CourseController {
         return new ModelAndView("redirect:/courses");
     }
 
+    @RequestMapping(value = "/courses/create", method = RequestMethod.GET)
+    public ModelAndView create(){
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("addCourse");
+        return modelAndView;
+    }
+
     @RequestMapping(value = "/courses/create", method = RequestMethod.POST)
     public ModelAndView create(@RequestParam String name, @RequestParam String description){
         Course course = new Course(name, description);

@@ -15,7 +15,7 @@
 <a href="/web/schedules">课表管理</a>
 <a href="/web/users/session/destroy">添加私教</a>
 
-<h1>课程维护</h1>
+<h1>课表维护</h1>
 <table border="1">
     <thead>
     <th>时间</th>

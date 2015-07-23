@@ -3,8 +3,11 @@ package com.tw.dao;
 import com.tw.entity.Course;
 import com.tw.entity.Schedule;
 import com.tw.util.HibernateUtil;
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Criterion;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -49,5 +52,13 @@ public class CourseDao {
         session.update(course);
         transaction.commit();
         session.close();
+    }
+
+    public List<Course> getUnArrangeSchedule(){
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        List<Course> list = session.createQuery("from Course c, Schedule s where c.id <> s.course.id").list();
+        session.close();
+        return list;
+
     }
 }
