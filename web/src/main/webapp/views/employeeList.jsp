@@ -7,7 +7,6 @@
 </head>
 <body>
 <a href="/web/users/session/destroy">注销</a>
-<a href="/web/users/">用户管理</a>
 <a href="/web/employees">员工管理</a>
 <a href="/web/users/session/destroy">Customer管理</a>
 <a href="/web/courses">课程管理</a>
