@@ -20,6 +20,13 @@ public class Schedule {
         this.employee = employee;
     }
 
+    public Schedule(int id, String day, Course course, Employee employee) {
+        this.id = id;
+        this.day = day;
+        this.course = course;
+        this.employee = employee;
+    }
+
     @Id
     @GeneratedValue
     public int getId() {

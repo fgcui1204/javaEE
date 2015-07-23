@@ -8,6 +8,7 @@
 <body>
 <h2>修改课表</h2>
 <form action="/web/schedules/create" method="post">
+    <input type="hidden" name="scheduleId" value="${schedule.id}">
     <table>
         <tr>
             <td>课程名称</td>

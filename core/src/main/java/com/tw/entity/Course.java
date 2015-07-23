@@ -1,9 +1,11 @@
 package com.tw.entity;
 
+import com.sun.org.apache.xml.internal.res.XMLErrorResources_tr;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
 import javax.persistence.*;
+import javax.sound.midi.SoundbankResource;
 import java.util.Set;
 
 @Entity
@@ -15,8 +17,20 @@ public class Course {
     private Set<Customer> customers;
     private Set<Schedule> schedules;
 
+    public Course(String name, String description) {
+        this.name = name;
+        this.description = description;
+    }
+
+    public Course(int id, String name, String description) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+    }
+
     public Course() {
     }
+
 
     @Id
     @GeneratedValue

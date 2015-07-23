@@ -1,14 +1,10 @@
 package com.tw.dao;
 
 import com.tw.entity.Coach;
-import com.tw.entity.Employee;
-import com.tw.entity.User;
 import com.tw.util.HibernateUtil;
 import org.hibernate.Session;
-import org.hibernate.Transaction;
 import org.springframework.stereotype.Repository;
 
-import java.util.EnumMap;
 import java.util.List;
 
 @Repository

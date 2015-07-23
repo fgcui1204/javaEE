@@ -65,5 +65,15 @@ public class ScheduleController {
         return modelAndView;
     }
 
+    @RequestMapping(value = "/schedules/update", method = RequestMethod.POST)
+    public ModelAndView update(@RequestParam int scheduleId, @RequestParam int courseId, @RequestParam int coachId, @RequestParam String day){
+        Employee employee = employeeService.getEmployeeById(coachId);
+        Course course = courseService.getCourseById(courseId);
+        Schedule schedule = new Schedule(scheduleId, day, course, employee);
+        scheduleService.update(schedule);
+        return new ModelAndView("redirect:/schedules");
+    }
+
+
 
 }

@@ -35,7 +35,7 @@
             <td>${employee.age}</td>
             <td>${employee.role}</td>
             <td><a href="/web/employees/delete/${employee.id}">删除</a></td>
-            <td><a href="/web/employees/${employee.id}">修改</a></td>
+            <td><a href="/web/employees/update/${employee.id}">修改</a></td>
         </tr>
     </c:forEach>
     </tbody>

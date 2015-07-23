@@ -5,7 +5,6 @@ import com.tw.util.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.springframework.stereotype.Repository;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -40,5 +39,14 @@ public class ScheduleDao {
         Schedule schedule = (Schedule)session.get(Schedule.class, id);
         session.close();
         return schedule;
+    }
+
+    public void update(Schedule schedule) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction transaction = session.beginTransaction();
+//        Schedule schedule1 = this.getSchedule(schedule.getId());
+        session.update(schedule);
+        transaction.commit();
+        session.close();
     }
 }

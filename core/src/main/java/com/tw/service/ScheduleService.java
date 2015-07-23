@@ -32,4 +32,7 @@ public class ScheduleService {
         return scheduleDao.getSchedule(id);
     }
 
+    public void update(Schedule schedule) {
+        scheduleDao.update(schedule);
     }
+}

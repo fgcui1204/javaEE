@@ -47,11 +47,18 @@ public class EmployeeDao {
 
     public Employee getEmployeeById(int id){
         Session session = HibernateUtil.getSessionFactory().openSession();
-        List<Employee> list = session.createQuery("select  new Employee(e.id,e.name,e.role,e.sex,e.mail,e.age) from Employee as e, User as u where e.id=u.employee.id and e.id="+id).list();
+        List<Employee> list = session.createQuery("select  new Employee(e.id,e.name,e.role,e.sex,e.mail,e.age) from Employee as e, User as u where e.id=u.employee.id and e.id=" + id).list();
         Employee employee = list.get(0);
         session.close();
         return employee;
+    }
 
+    public void updateEmployee(Employee employee) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction transaction = session.beginTransaction();
+        session.update(employee);
+        transaction.commit();
+        session.close();
     }
 //    public int getEmployeeId(String name){
 //        Session session = HibernateUtil.getSessionFactory().openSession();
