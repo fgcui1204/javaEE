@@ -11,6 +11,14 @@ public class Customer {
     private String telphone;
     private Set<Course> courses;
 
+    public Customer() {
+    }
+
+    public Customer(String name, String telphone) {
+        this.name = name;
+        this.telphone = telphone;
+    }
+
     @Id
     @GeneratedValue
     public int getId() {

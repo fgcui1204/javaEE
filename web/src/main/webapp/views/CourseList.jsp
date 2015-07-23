@@ -23,6 +23,7 @@
                 </li>
                 <li class="active"><a href="/web/courses">课程管理</a></li>
                 <li><a href="/web/schedules">课表管理</a></li>
+                <li><a href="/web/customers">顾客管理</a></li>
                 <li><a href="/web/schedules">添加私教课</a></li>
 
             </ul>
