@@ -3,20 +3,36 @@
 
 <html>
 <head>
+    <link href="./lib/css/scheduleList.css" rel="stylesheet"/>
     <title>课表管理</title>
 </head>
 <body>
 
-<a href="/web/users/session/destroy">注销</a>
-<a href="/web/users/">用户管理</a>
-<a href="/web/employees">员工管理</a>
-<a href="/web/users/session/destroy">Customer管理</a>
-<a href="/web/courses">课程管理</a>
-<a href="/web/schedules">课表管理</a>
-<a href="/web/users/session/destroy">添加私教</a>
+<ul>
+    <li>
+        <a href="/web/users/session/destroy">注销</a>
+    </li>
+    <li>
+        <a href="/web/users/">用户管理</a>
+    </li>
+    <li>
+        <a href="/web/employees">员工管理</a>
+    </li>
+    <li>
+        <a href="/web/customers">Customer管理</a>
+    </li>
+    <li>
+        <a href="/web/courses">课程管理</a>
+    </li>
+    <li>
+        <a href="/web/schedules">课表管理</a>
+
+    </li>
+
+</ul>
 
 <h1>课表维护</h1>
-<table border="1">
+<table class="schedule_table">
     <thead>
     <th>时间</th>
     <th>课程名称</th>
