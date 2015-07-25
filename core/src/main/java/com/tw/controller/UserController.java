@@ -1,5 +1,6 @@
 package com.tw.controller;
 
+import com.tw.entity.User;
 import com.tw.service.UserService;
 import com.tw.util.ParseMD5;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 
@@ -33,28 +35,18 @@ public class UserController {
         return modelAndView;
     }
 
-//    @RequestMapping(value = "/users/put", method = RequestMethod.POST)
-//    public String updateUser(@RequestParam int id, @RequestParam String name, @RequestParam String password, @RequestParam String sex, @RequestParam String mail, @RequestParam int age){
-//
-//        String userPassword = password.equals(userService.getUser(id).getPassword())?password:parseMD5.parseStrToMd5L32(password);
-//        User user = new User(id, name,sex, mail,age,userPassword);
-//        userService.updateUser(user);
-//        return "redirect:/users";
-//    }
+    @RequestMapping(value = "/users/put", method = RequestMethod.POST)
+    public String updateUser(@RequestParam int id, @RequestParam String name, @RequestParam String password){
+
+        String userPassword = password.equals(userService.getUser(id).getPassword())?password:parseMD5.parseStrToMd5L32(password);
+        User user = new User(id, name, userPassword);
+        userService.updateUser(user);
+        return "redirect:/users";
+    }
 
     @RequestMapping(value = "/users/delete/{id}", method = RequestMethod.GET)
     public String deleteUser(@PathVariable int id){
         userService.deleteUser(id);
         return "redirect:/users";
     }
-//
-//    @RequestMapping(value = "/users/post", method = RequestMethod.POST)
-//    public String addUser(@RequestParam String name,@RequestParam String password, @RequestParam String sex, @RequestParam String mail, @RequestParam int age){
-//        String password_md5 = parseMD5.parseStrToMd5L32(password);
-//        User user = new User(name, sex, mail, age, password_md5);
-//        userService.addUser(user);
-//        return "redirect:/users";
-//    }
-
-
 }

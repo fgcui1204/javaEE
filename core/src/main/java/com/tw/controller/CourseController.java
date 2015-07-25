@@ -1,7 +1,10 @@
 package com.tw.controller;
 
 import com.tw.entity.Course;
+import com.tw.entity.Employee;
 import com.tw.service.CourseService;
+import com.tw.service.CustomerService;
+import com.tw.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,6 +20,12 @@ public class CourseController {
 
     @Autowired
     private CourseService courseService;
+
+    @Autowired
+    private CustomerService customerService;
+
+    @Autowired
+    private EmployeeService employeeService;
 
     @RequestMapping(value = "/courses", method = RequestMethod.GET)
     public ModelAndView getCoachList(){
@@ -59,5 +68,14 @@ public class CourseController {
         Course course = new Course(id, name, description);
         courseService.updateCourse(course);
         return new ModelAndView("redirect:/courses");
+    }
+
+    @RequestMapping(value = "/private/course/create", method = RequestMethod.GET)
+    public ModelAndView createPrivate(){
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("customers", customerService.getCustomers());
+        modelAndView.addObject("coaches", employeeService.getCoaches());
+        modelAndView.setViewName("addPrivateCourse");
+        return modelAndView;
     }
 }

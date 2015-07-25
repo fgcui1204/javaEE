@@ -56,7 +56,10 @@ public class CourseDao {
 
     public List<Course> getUnArrangeSchedule(){
         Session session = HibernateUtil.getSessionFactory().openSession();
-        List<Course> list = session.createQuery("from Course c, Schedule s where c.id <> s.course.id").list();
+        List<Course> list = session.createQuery("select new Course(c.id, c.name, c.description) from Course c, Schedule s where c.id != s.course.id").list();
+        for(Course course: list){
+            System.out.println(course.getId()+"-------------");
+        }
         session.close();
         return list;
 

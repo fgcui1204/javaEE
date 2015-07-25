@@ -1,9 +1,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 
 <html>
 <head>
-    <link href="./lib/css/scheduleList.css" rel="stylesheet"/>
+    <spring:url value="/lib/css/scheduleList.css" var="bootstrapCss"/>
+    <link href="${bootstrapCss}" rel="stylesheet"/>
+    <%--<link href="./lib/css/scheduleList.css" rel="stylesheet"/>--%>
     <title>课表管理</title>
 </head>
 <body>
@@ -26,7 +29,6 @@
     </li>
     <li>
         <a href="/web/schedules">课表管理</a>
-
     </li>
 
 </ul>
@@ -37,7 +39,6 @@
     <th>时间</th>
     <th>课程名称</th>
     <th>教练</th>
-
     <th>删除</th>
     <th>修改</th>
     </thead>
