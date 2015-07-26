@@ -6,11 +6,9 @@ import com.tw.service.CourseService;
 import com.tw.service.CustomerService;
 import com.tw.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 
@@ -35,10 +33,10 @@ public class CourseController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/courses/delete/{id}", method = RequestMethod.GET)
-    public ModelAndView delete(@PathVariable int id){
+    @RequestMapping(value = "/courses/delete/{id}", method = RequestMethod.DELETE)
+    @ResponseBody
+    public void delete(@PathVariable int id){
         courseService.delete(id);
-        return new ModelAndView("redirect:/courses");
     }
 
     @RequestMapping(value = "/courses/create", method = RequestMethod.GET)
@@ -56,18 +54,18 @@ public class CourseController {
     }
 
     @RequestMapping(value = "/courses/update/{id}", method = RequestMethod.GET)
-    public ModelAndView getSchedule(@PathVariable int id){
+    public ModelAndView getCourse(@PathVariable int id){
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("updateCourse");
         modelAndView.addObject("course", courseService.getCourse(id));
         return modelAndView;
     }
 
-    @RequestMapping(value = "/courses/update", method = RequestMethod.POST)
-    public ModelAndView update(@RequestParam int id, @RequestParam String name, @RequestParam String description){
+    @RequestMapping(value = "/courses/update", method = RequestMethod.PUT)
+    @ResponseBody
+    public void update(@RequestParam int id, @RequestParam String name, @RequestParam String description){
         Course course = new Course(id, name, description);
         courseService.updateCourse(course);
-        return new ModelAndView("redirect:/courses");
     }
 
     @RequestMapping(value = "/private/course/create", method = RequestMethod.GET)

@@ -31,7 +31,6 @@ public class Course {
     public Course() {
     }
 
-
     @Id
     @GeneratedValue
     public int getId() {
