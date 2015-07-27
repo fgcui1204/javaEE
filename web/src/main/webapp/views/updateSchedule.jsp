@@ -7,7 +7,7 @@
 </head>
 <body>
 <h2>修改课表</h2>
-<form action="/web/schedules/create" method="post">
+<form action="/web/schedules/update" method="post">
     <input type="hidden" name="scheduleId" value="${schedule.id}">
     <table>
         <tr>

@@ -22,7 +22,7 @@
         <a href="/web/employees">员工管理</a>
     </li>
     <li>
-        <a href="/web/customers">Customer管理</a>
+        <a href="/web/customers">顾客管理</a>
     </li>
     <li>
         <a href="/web/courses">课程管理</a>

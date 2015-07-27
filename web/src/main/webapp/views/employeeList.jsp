@@ -1,44 +1,78 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 
 <html>
 <head>
+    <spring:url value="/lib/css/bootstrap.min.css" var="bootstrapCss"/>
+    <link href="${bootstrapCss}" rel="stylesheet"/>
+    <spring:url value="/lib/js/jquery-1.11.1.min.js" var="jqueryJs"/>
+    <script src="${jqueryJs}"></script>
+    <script src="${bootstrapJs}"></script>
     <title></title>
 </head>
 <body>
-<a href="/web/users/session/destroy">注销</a>
-<a href="/web/employees">员工管理</a>
-<a href="/web/customers">Customer管理</a>
-<a href="/web/courses">课程管理</a>
-<a href="/web/schedules">课表管理</a>
-<a href="/web/users/session/destroy">添加私教</a>
+<div class="container">
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active">
+                        <a href="/web/employees">员工管理</a>
+                    </li>
+                    <li>
+                        <a href="/web/courses">课程管理</a>
+                    </li>
+                    <li>
+                        <a href="/web/users">用户管理</a>
+                    </li>
+                    <li>
+                        <a href="/web/schedules">课表管理</a>
+                    </li>
+                    <li>
+                        <a href="/web/customers">顾客管理</a>
+                    </li>
+                    <li>
+                        <a href="/web/private/course/create">添加私教课</a>
+                    </li>
+                </ul>
 
-<h1>员工信息维护</h1>
-<table border="1">
-    <thead>
-    <th>姓名</th>
-    <th>邮箱</th>
-    <th>性别</th>
-    <th>年龄</th>
-    <th>角色</th>
-    <th>删除</th>
-    <th>修改</th>
-    </thead>
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/web/users/session/destroy">注销</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
-    <tbody>
-    <c:forEach items="${employeeList}" var="employee">
-        <tr>
-            <td>${employee.name}</td>
-            <td>${employee.mail}</td>
-            <td>${employee.sex}</td>
-            <td>${employee.age}</td>
-            <td>${employee.role}</td>
-            <td><a href="/web/employees/delete/${employee.id}">删除</a></td>
-            <td><a href="/web/employees/update/${employee.id}">修改</a></td>
-        </tr>
-    </c:forEach>
-    </tbody>
-</table>
-<a href="views/register.jsp">添加员工</a>
+    <h1>员工信息维护</h1>
+    <table class="table table-striped table-bordered table-condensed">
+        <thead>
+        <th>姓名</th>
+        <th>邮箱</th>
+        <th>性别</th>
+        <th>年龄</th>
+        <th>角色</th>
+        <th>删除</th>
+        <th>修改</th>
+        </thead>
+
+        <tbody>
+        <c:forEach items="${employeeList}" var="employee">
+            <tr>
+                <td>${employee.name}</td>
+                <td>${employee.mail}</td>
+                <td>${employee.sex}</td>
+                <td>${employee.age}</td>
+                <td>${employee.role}</td>
+                <td><a href="/web/employees/delete/${employee.id}" class="btn btn-primary">删除</a></td>
+                <td><a href="/web/employees/update/${employee.id}" class="btn btn-primary">修改</a></td>
+            </tr>
+        </c:forEach>
+        </tbody>
+    </table>
+    <a href="views/register.jsp" class="btn btn-primary">添加员工</a>
+</div>
 </body>
 </html>

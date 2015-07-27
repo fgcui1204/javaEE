@@ -6,7 +6,6 @@
 <head>
     <spring:url value="/lib/css/bootstrap.min.css" var="bootstrapCss"/>
     <link href="${bootstrapCss}" rel="stylesheet"/>
-    <%--<spring:url value="/lib/js/bootstrap.min.js" var="bootstrapJs"/>--%>
     <spring:url value="/lib/js/jquery-1.11.1.min.js" var="jqueryJs"/>
     <script src="${jqueryJs}"></script>
     <script src="${bootstrapJs}"></script>
@@ -20,10 +19,13 @@
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="/web/employees">员工管理 <span class="sr-only">(current)</span></a>
+                        <a href="/web/employees">员工管理</a>
                     </li>
                     <li class="active">
                         <a href="/web/courses">课程管理</a>
+                    </li>
+                    <li>
+                        <a href="/web/users">用户管理</a>
                     </li>
                     <li>
                         <a href="/web/schedules">课表管理</a>
@@ -71,7 +73,8 @@
         </c:forEach>
         </tbody>
     </table>
-    <a href="/web/courses/create">添加课程</a>
+    <%--<button type="button" class="btn btn-primary add_course">添加课程</button>--%>
+    <a href="/web/courses/create" class="btn-primary btn">添加课程</a>
 </div>
 </body>
 </html>
